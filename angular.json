@@ -1,0 +1,120 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projects": {
+    "admin-panel": {
+      "projectType": "application",
+      "schematics": {},
+      "root": "",
+      "sourceRoot": "src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/admin-panel",
+            "index": "src/index.html",
+            "main": "src/main.ts",
+            "polyfills": [
+              "zone.js"
+            ],
+            "tsConfig": "tsconfig.app.json",
+            "assets": [
+              "src/favicon.ico",
+              "src/assets"
+            ],
+            "styles": [
+              "src/assets/vendor/bootsrap/bootstrap.min.css",
+              "src/assets/vendor/nouislider/nouislider.min.css",
+              "src/assets/vendor/jquery-nice-select/css/nice-select.css",
+              "src/assets/css/perfect-scrollbar.css",
+              "src/assets/css/style.css"
+            ],
+            "scripts": [
+
+
+              "src/assets/vendor/chart.js/Chart.bundle.min.js",
+              "src/assets/vendor/jquery-nice-select/js/jquery.nice-select.min.js",
+              "src/assets/vendor/apexchart/apexchart.js",
+              "src/assets/vendor/nouislider/nouislider.min.js",
+              "src/assets/vendor/wnumb/wNumb.js",
+              "src/assets/js/dashboard/dashboard-1.js",
+              "src/assets/js/custom.min.js",
+              "src/assets/js/dlabnav-init.js",
+              "src/assets/vendor/global/global.min.js"
+
+
+
+            ]
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "browserTarget": "admin-panel:build:production"
+            },
+            "development": {
+              "browserTarget": "admin-panel:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "admin-panel:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ],
+            "tsConfig": "tsconfig.spec.json",
+            "assets": [
+              "src/favicon.ico",
+              "src/assets"
+            ],
+            "styles": [
+              "src/styles.css"
+            ],
+            "scripts": []
+          }
+        }
+      }
+    }
+  },
+  "cli": {
+    "analytics": "92b3886d-7266-4c1f-a349-b3ce67e16107"
+  }
+}
